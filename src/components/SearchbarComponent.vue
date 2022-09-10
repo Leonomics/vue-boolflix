@@ -23,6 +23,10 @@ export default {
       api_key: '6774fac658b7c631bbcfd6f459c7eee5',
       movies: [],
       query:'',
+      it_flag:'https://countryflagsapi.com/png/it',
+      en_flag:'https://countryflagsapi.com/png/gb',
+      es_flag:'https://countryflagsapi.com/png/es',
+      ja_flag:'https://countryflagsapi.com/png/jp',
     }
   },
 
@@ -41,12 +45,13 @@ export default {
         });
     },
   },
+
   props: {
   },
 
-  beforeMount(){
+  /*beforeMount(){
     this.fetchMovies()
-  }
+  }*/
 
 }
 </script>
