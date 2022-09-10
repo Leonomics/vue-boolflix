@@ -1,8 +1,15 @@
 <template>
   <div>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Enter movie name">
-  </div>
+      <input type="text" v-model="query" class="form-control" placeholder="Enter movie name">
+      <button @click="fetchMovies" type="submit" class="btn btn-primary">Submit</button>
+      <ul>
+        <li v-for="movie in movies" :key="movie.id">
+          {{"title: " + movie.title}}<br>
+          {{"original title: "+movie.original_title}}<br>
+          {{"original language: "+movie.original_language}}<br>
+          {{"average vote: "+movie.vote_average}}<br><br>
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -14,19 +21,33 @@ export default {
   data(){
     return{
       api_key: '6774fac658b7c631bbcfd6f459c7eee5',
+      movies: [],
+      query:'',
     }
+  },
+
+  methods:{
+    fetchMovies(){
+      axios
+            .get(`https://api.themoviedb.org/3/search/movie`,{
+              params:{
+                api_key: this.api_key,
+                query: this.query,
+              }
+            })
+            .then((res) => {
+            this.movies = res.data.results;
+            console.log(res)
+        });
+    },
   },
   props: {
   },
 
-  created() {
-        axios
-            .get("https://developers.themoviedb.org/3/search/movie")
-            .then((res) => {
-            console.log(res.data);
-            this.listDisks = res.data.response;
-        });
-    },
+  beforeMount(){
+    this.fetchMovies()
+  }
+
 }
 </script>
 
