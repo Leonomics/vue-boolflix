@@ -9,6 +9,7 @@
 
 <script>
     export default{
+
         props:{
             movie:{
                 type: Object,
@@ -16,11 +17,9 @@
             }
         },
 
-
     }
 
 </script>
 
 <style lang="scss" scoped>
-
 </style>
