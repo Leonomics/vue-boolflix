@@ -4,6 +4,9 @@
         <p>{{"original title: "+movie.original_title}}</p>
         <p>{{"original language: "+movie.lang}}</p>
         <p>{{"average vote: "+movie.vote}}</p>
+        <p>{{movie.poster}}</p>
+        <img height="20" v-if="movie.flag" :src="movie.flag">
+        <p v-else>{{movie.lang}}</p>
     </li>
 </template>
 

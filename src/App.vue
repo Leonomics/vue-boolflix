@@ -25,7 +25,8 @@ export default {
       original_movies: [],
       original_serieses: [],
       query:'',
-      posterBaseUri:'',
+      posterBaseUri:'https://',
+      posterSize:'w342'
     };
   },
   computed:{
@@ -37,7 +38,7 @@ export default {
           original_title: el.original_title,
           lang: el.original_language,
           //flag:this.flags[el.original_language],
-          poster:`${this.posterBaseUri}w342${el.poster_path}`,
+          poster: el.poster_path ? `${this.posterBaseUri}${this.posterSize}${el.poster_path}`: null,
           vote: Math.ceil(el.vote_average/2)
         }
         return newMovie
@@ -76,6 +77,8 @@ export default {
     setSerieses(serieses){
       this.original_serieses = serieses
     },
+
+    getFullPath(poster_path)
   },
   components: {
     MovieCardComponent,

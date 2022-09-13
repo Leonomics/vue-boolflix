@@ -18,11 +18,6 @@
         },
         methods:{
 
-            fetchMedia(){
-                this.fetchMovies(),
-                this.fetchSeries()
-            },
-
             fetchMovies(){
             axios
             .get(`https://api.themoviedb.org/3/search/movie`,{
