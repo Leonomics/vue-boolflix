@@ -5,6 +5,7 @@
         <p>{{"original language: "+movie.lang}}</p>
         <p>{{"average vote: "+movie.vote}}</p>
         <p>{{movie.poster}}</p>
+        <img v-if="movie.poster" :src="movie.poster" width="342">
         <img height="20" v-if="movie.flag" :src="movie.flag">
         <p v-else>{{movie.lang}}</p>
     </li>

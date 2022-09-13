@@ -25,7 +25,7 @@ export default {
       original_movies: [],
       original_serieses: [],
       query:'',
-      posterBaseUri:'https://',
+      posterBaseUri:'https://image.tmdb.org/t/p/',
       posterSize:'w342'
     };
   },
@@ -38,7 +38,7 @@ export default {
           original_title: el.original_title,
           lang: el.original_language,
           //flag:this.flags[el.original_language],
-          poster: el.poster_path ? `${this.posterBaseUri}${this.posterSize}${el.poster_path}`: null,
+          poster: this.getFullPath(el.poster_path),
           vote: Math.ceil(el.vote_average/2)
         }
         return newMovie
@@ -57,7 +57,7 @@ export default {
           original_title: original_name,
           lang: original_language,
           //flag: this.flags[original_language],
-          poster:`${this.posterBaseUri}w342${poster_path}`,
+          poster: this.getFullPath(poster_path),
           vote: Math.ceil(vote_average/2)
         }
         return newSeries
@@ -78,7 +78,12 @@ export default {
       this.original_serieses = serieses
     },
 
-    getFullPath(poster_path)
+    getFullPath(posterPath){
+      if(posterPath){
+        return `${this.posterBaseUri}${this.posterSize}${posterPath}`
+      }
+      return null
+    }
   },
   components: {
     MovieCardComponent,
