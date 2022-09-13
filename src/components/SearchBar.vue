@@ -1,8 +1,11 @@
 <template>
     <header>
-      <div>
-        <input type="text" placeholder="Inserisci un titolo" @keyup.enter="fetchMovies" v-model="query">
-        <input type="button" value="Cerca" @click="fetchMovies">
+      <div class="navbarContent container">
+        <h1>BOOLFLIX</h1>
+        <div>
+            <input type="text" placeholder="Inserisci un titolo" @keyup.enter="fetchMovies" v-model="query">
+            <input type="button" value="Cerca" @click="fetchMovies">
+        </div>
       </div>
     </header>
 </template>
@@ -65,5 +68,15 @@
 </script>
 
 <style lang="scss" scoped>
+    header{
+        background-color: black;
+    }
 
+    .navbarContent{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: red;
+        align-items: center;
+    }
 </style>

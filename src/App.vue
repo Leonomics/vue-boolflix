@@ -21,6 +21,7 @@ export default {
   name: 'App',
   data(){
     return{
+      flags:['en', 'ja', 'it'],
       api_key: '6774fac658b7c631bbcfd6f459c7eee5',
       original_movies: [],
       original_serieses: [],
@@ -37,7 +38,7 @@ export default {
           title: el.title,
           original_title: el.original_title,
           lang: el.original_language,
-          //flag:this.flags[el.original_language],
+          flag:this.flags.includes(el.original_language) ? require(`./assets/${el.original_language}.png`) : null,
           poster: this.getFullPath(el.poster_path),
           vote: Math.ceil(el.vote_average/2)
         }
@@ -56,7 +57,7 @@ export default {
           title: name,
           original_title: original_name,
           lang: original_language,
-          //flag: this.flags[original_language],
+          flag:this.flags.includes(original_language) ? require(`./assets/${original_language}.png`) : null,
           poster: this.getFullPath(poster_path),
           vote: Math.ceil(vote_average/2)
         }
@@ -93,5 +94,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './styles/general';
+  @import './styles/general.scss';
 </style>
