@@ -2,11 +2,11 @@
   <div id="app">
     <SearchBar @onMovieResponse="setMovies" @onSeriesesResponse="setSerieses"/>
     <h2>Film</h2>
-    <ul>
+    <ul class="row">
       <MovieCardComponent v-for="movie in movies" :key="movie.id" :movie="movie"/>
     </ul>
     <h2>Serie</h2>
-    <ul>
+    <ul class="row">
       <MovieCardComponent v-for="series in serieses" :key="series.id" :movie="series"/>
     </ul>
   </div>
@@ -95,4 +95,8 @@ export default {
 
 <style lang="scss">
   @import './styles/general.scss';
+
+  .row{
+    margin-bottom: 3rem;
+  }
 </style>
